@@ -7,8 +7,8 @@ This is the official template for creating a **UI Kit** repository within the Ae
 *   **Type:** UI Kit
 *   **License:** **Mozilla Public License 2.0 (MPL 2.0)**
 *   **Dependencies:**
-    *   `aerobeat-core` (Required foundation)
-    *   `aerobeat-ui-core` (Required UI logic contract)
+    *   `aerobeat-ui-core` (Required UI logic and shared component contract)
+    *   Adjacent lane cores only when this specific UI kit actually consumes them
 
 ## GodotEnv development flow
 
@@ -31,7 +31,7 @@ cd .testbed
 godotenv addons install
 ```
 
-That installs the pinned `aerobeat-core` and `aerobeat-ui-core` foundations plus GUT into `.testbed/addons/`.
+That restores this repo's current dev/test manifest into `.testbed/addons/`. Canonically, UI kit repos should describe their shared dependency story around `aerobeat-ui-core`, not a universal `aerobeat-core` hub.
 
 ### Open the workbench
 
@@ -65,6 +65,7 @@ godot --headless --path .testbed --script addons/gut/gut_cmdln.gd \
 ### Validation notes
 
 - `.testbed/addons.jsonc` is the committed dev/test dependency contract.
-- The manifest pins `aerobeat-core` to `v0.1.0` and `aerobeat-ui-core` to `v0.1.1`.
+- The current manifest still pins the transition-era `aerobeat-core` package key alongside `aerobeat-ui-core`. Treat that as bootstrap-state drift rather than the canonical lane model.
+- Canonical shared dependency language for UI kit repos is `aerobeat-ui-core`, with adjacent lane cores added only when the repo actually consumes them.
 - Repo-local unit tests live under `.testbed/tests/`; this repo's current package payload is rooted at `/`, so the workbench does not ship a `.testbed/src` bridge for this subset.
 - The current package shape is consumed from the repo root (`subfolder: "/"`) for downstream installs.
