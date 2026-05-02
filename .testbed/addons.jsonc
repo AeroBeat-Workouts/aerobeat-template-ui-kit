@@ -1,13 +1,7 @@
 {
   "$schema": "https://chickensoft.games/schemas/addons.schema.json",
   "addons": {
-    // Batch 2 pins the foundational core contract for UI-kit template work.
-    "aerobeat-core": {
-      "url": "git@github.com:AeroBeat-Workouts/aerobeat-core.git",
-      "checkout": "v0.1.0",
-      "subfolder": "/"
-    },
-    // Batch 2 pins the shared UI logic contract for UI-kit template work.
+    // UI-kit template bootstrap pins the shared UI logic contract.
     "aerobeat-ui-core": {
       "url": "git@github.com:AeroBeat-Workouts/aerobeat-ui-core.git",
       "checkout": "v0.1.1",

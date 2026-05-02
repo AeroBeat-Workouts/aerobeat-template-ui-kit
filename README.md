@@ -1,14 +1,22 @@
 # AeroBeat UI Kit Template
 
-This is the official template for creating a **UI Kit** repository within the AeroBeat ecosystem.
+This is the official template for creating **UI kit** repositories within the current AeroBeat v1 architecture.
+
+It should be read against the locked product direction from `aerobeat-docs`:
+
+- **Primary release target:** PC community first
+- **Official v1 gameplay features:** Boxing and Flow
+- **Official v1 gameplay input:** camera only
+- **UI input stance:** mouse and touch remain valid for UI navigation, without implying equal-status gameplay input support
+- **UI kit ownership:** shared visual components and presentation patterns belong here; gameplay-facing input and feature logic belong to their own lane repos
 
 ## 📋 Repository Details
 
-*   **Type:** UI Kit
-*   **License:** **Mozilla Public License 2.0 (MPL 2.0)**
-*   **Dependencies:**
-    *   `aerobeat-ui-core` (Required UI logic and shared component contract)
-    *   Adjacent lane cores only when this specific UI kit actually consumes them
+- **Type:** UI kit template
+- **License:** **Mozilla Public License 2.0 (MPL 2.0)**
+- **Dependency contract:**
+  - `aerobeat-ui-core` — required shared UI logic and component contract
+  - additional adjacent lane/core repos only when the specific kit actually consumes them
 
 ## GodotEnv development flow
 
@@ -31,7 +39,7 @@ cd .testbed
 godotenv addons install
 ```
 
-That restores this repo's current dev/test manifest into `.testbed/addons/`. Canonically, UI kit repos should describe their shared dependency story around `aerobeat-ui-core`, not a universal `aerobeat-core` hub.
+That restores this repo's current dev/test manifest into `.testbed/addons/`. Canonically, UI kit templates should keep the baseline manifest narrow: `aerobeat-ui-core` plus test-only tooling.
 
 ### Open the workbench
 
@@ -41,7 +49,7 @@ From the repo root:
 godot --editor --path .testbed
 ```
 
-Use this `.testbed/` project as the canonical direct-development and bugfinding surface for UI-kit work.
+Use this `.testbed/` project as the canonical direct-development and bugfinding surface for UI-kit template work.
 
 ### Import smoke check
 
@@ -65,7 +73,7 @@ godot --headless --path .testbed --script addons/gut/gut_cmdln.gd \
 ### Validation notes
 
 - `.testbed/addons.jsonc` is the committed dev/test dependency contract.
-- The current manifest still pins the transition-era `aerobeat-core` package key alongside `aerobeat-ui-core`. Treat that as bootstrap-state drift rather than the canonical lane model.
-- Canonical shared dependency language for UI kit repos is `aerobeat-ui-core`, with adjacent lane cores added only when the repo actually consumes them.
-- Repo-local unit tests live under `.testbed/tests/`; this repo's current package payload is rooted at `/`, so the workbench does not ship a `.testbed/src` bridge for this subset.
+- The canonical template manifest for this repo is `aerobeat-ui-core` + `gut`.
+- If a concrete UI kit needs adjacent lane repos, add them intentionally rather than restoring a universal `aerobeat-core` baseline.
+- Repo-local unit tests live under `.testbed/tests/` and currently validate repo metadata plus the manifest contract.
 - The current package shape is consumed from the repo root (`subfolder: "/"`) for downstream installs.

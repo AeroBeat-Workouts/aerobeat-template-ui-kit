@@ -20,6 +20,9 @@ Thumbs.db
 !.testbed/addons/.editorconfig
 .testbed/.addons/
 
+# Godot-generated UID sidecars can appear during validation in the hidden testbed.
+*.uid
+
 # Beads / Dolt files (added by bd init)
 .dolt/
 *.db
