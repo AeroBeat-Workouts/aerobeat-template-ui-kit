@@ -64,7 +64,7 @@ godot --headless --path .testbed --import
 From the repo root:
 
 ```bash
-godot --headless --path .testbed --script addons/gut/gut_cmdln.gd \
+godot --headless --path .testbed --script addons/aerobeat-vendor-godot-unit-test/gut_cmdln.gd \
   -gdir=res://tests \
   -ginclude_subdirs \
   -gexit
@@ -73,7 +73,7 @@ godot --headless --path .testbed --script addons/gut/gut_cmdln.gd \
 ### Validation notes
 
 - `.testbed/addons.jsonc` is the committed dev/test dependency contract.
-- The canonical template manifest for this repo is `aerobeat-ui-core` + `gut`.
+- The canonical template manifest for this repo is `aerobeat-ui-core` + `aerobeat-vendor-godot-unit-test`.
 - If a concrete UI kit needs adjacent lane repos, add them intentionally rather than restoring a universal `aerobeat-core` baseline.
 - Repo-local unit tests live under `.testbed/tests/` and currently validate repo metadata plus the manifest contract.
 - The current package shape is consumed from the repo root (`subfolder: "/"`) for downstream installs.
